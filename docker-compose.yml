@@ -16,8 +16,8 @@ services:
       --ipcdisable
       --networkid=${NETWORK_ID}
       --netrestrict="172.16.254.0/28"
-    volumes:
-      - ./bootnode-data:/root/.ethereum
+    # volumes:
+    #   - ./bootnode-data:/root/.ethereum
     networks:
       priv-eth-net:
 
@@ -31,6 +31,7 @@ services:
     command:
       --bootnodes="enode://af22c29c316ad069cf48a09a4ad5cf04a251b411e45098888d114c6dd7f489a13786620d5953738762afa13711d4ffb3b19aa5de772d8af72f851f7e9c5b164a@geth-bootnode:30303"
       --allow-insecure-unlock
+      --datadir ~/.ethereum
       --http
       --http.addr="0.0.0.0"
       --http.api="eth,web3,net,admin,personal"
@@ -54,12 +55,12 @@ services:
     command:
       --bootnodes="enode://af22c29c316ad069cf48a09a4ad5cf04a251b411e45098888d114c6dd7f489a13786620d5953738762afa13711d4ffb3b19aa5de772d8af72f851f7e9c5b164a@geth-bootnode:30303"
       --mine
-      --miner.threads=2
+      --miner.threads=1
       --miner.etherbase="0x6ccdb4b119aBA160E79317C7638dC576cAE55EB5"
       --networkid=${NETWORK_ID}
       --netrestrict="172.16.254.0/28"
-    volumes:
-      - ./miner-data:/root/.ethereum
+    # volumes:
+    #   - ./miner-data:/root/.ethereum
     networks:
       priv-eth-net:
 
